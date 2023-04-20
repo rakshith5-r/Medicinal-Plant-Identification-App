@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "679818792611",
+    "project_id": "flore-42f7f",
+    "storage_bucket": "flore-42f7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679818792611:android:4d5a9c0bb028a7daebb916",
+        "android_client_info": {
+          "package_name": "com.example.flore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679818792611-iptf9h53je0m56uvnaba3063qnn82qp8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSlNuMTi0nqeKMBmn1pt7TrAgsFqxFm7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679818792611-iptf9h53je0m56uvnaba3063qnn82qp8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
