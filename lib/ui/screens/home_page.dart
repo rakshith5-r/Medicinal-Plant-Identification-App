@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {
-
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -24,7 +23,6 @@ class _HomePageState extends State<HomePage> {
 
     List<Plant> _plantList = Plant.plantList;
 
-
     //Toggle Favorite button
     bool toggleIsFavorated(bool isFavorited) {
       return !isFavorited;
@@ -36,62 +34,43 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //for search bar
-            Container(
-              padding: const EdgeInsets.only(top: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: size.width * 0.95,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
-                          spreadRadius: 3,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, PageTransition(child: SearchPage(), type: PageTransitionType.fade));// Do something when the button is pressed
+              },
+              child: Container(
+                padding: const EdgeInsets.only(top: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      width: size.width * 0.95,
+                      height: 40,
+                      child: Neumorphic(
+                        style: NeumorphicStyle(
+                          depth: -1.5,
+                          intensity: 1.5,
+                          color: Color.fromRGBO(150, 190, 93, 200),
+                          shadowLightColorEmboss: Colors.grey.withOpacity(0.3),
+                          shadowDarkColorEmboss: Colors.grey.withOpacity(0.3),
+                          boxShape: NeumorphicBoxShape.roundRect(
+                              BorderRadius.circular(20)),
+                          shape: NeumorphicShape.flat,
                         ),
-                      ],
-                    ),
-                    child: Neumorphic(
-                      style: NeumorphicStyle(
-                        depth: -1.5,
-                        intensity: 1.5,
-                        color: Color.fromRGBO(150, 190, 93, 200),
-                        shadowLightColorEmboss: Colors.grey.withOpacity(0.3),
-                        shadowDarkColorEmboss: Colors.grey.withOpacity(0.3),
-                        boxShape: NeumorphicBoxShape.roundRect(
-                            BorderRadius.circular(10)),
-                        shape: NeumorphicShape.flat,
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      SearchPage())); // Handle search icon tap
-                        },
                         child: Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Expanded(
-                                child: TextField(
-                                  showCursor: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Search Plant',
-                                    border: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    hintStyle: TextStyle(
-                                      color: Color.fromRGBO(75, 117, 89, 9),
-                                    ),
-                                  ),
+                              Text(
+                                'Search Plant',
+                                style: TextStyle(
+                                  color: Color.fromRGBO(75, 117, 89, 9),
+                                  fontSize: 17,
                                 ),
+                              ),
+                              SizedBox(
+                                width: 175.5,
                               ),
                               SizedBox(
                                 width: 50,
@@ -102,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                                     intensity: 0,
                                     color: Color.fromRGBO(75, 117, 89, 9),
                                     boxShape: NeumorphicBoxShape.roundRect(
-                                        BorderRadius.circular(10)),
+                                        BorderRadius.circular(20)),
                                     shape: NeumorphicShape.flat,
                                   ),
                                   child: Icon(
@@ -116,8 +95,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
 
@@ -315,7 +294,8 @@ class _HomePageState extends State<HomePage> {
                           lightSource: LightSource.topLeft,
                           color: const Color.fromRGBO(125, 180, 50, 170),
                           intensity: 0.5,
-                          shadowLightColor: const Color.fromRGBO(130, 180, 50, 180),
+                          shadowLightColor:
+                              const Color.fromRGBO(130, 180, 50, 180),
                           shadowDarkColor: const Color.fromRGBO(75, 117, 89, 9),
                         ),
                         child: Stack(
@@ -355,7 +335,6 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-
                                   Text(
                                     _plantList[index].plantName.tr,
                                     style: const TextStyle(

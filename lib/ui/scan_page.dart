@@ -3,11 +3,11 @@ import 'package:flore/models/plants.dart';
 import 'package:flore/ui/screens/DetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 class ScanPage extends StatefulWidget {
   final int plantID;
-
   const ScanPage({Key? key, required this.plantID}) : super(key: key);
 
   @override
@@ -81,7 +81,7 @@ class _ScanPageState extends State<ScanPage> {
                       ),
                       SizedBox(width: 30),
                       Text(
-                        _plantList[widget.plantID].plantName,
+                        _plantList[widget.plantID].plantName.tr,
                         style: TextStyle(
                           color: Color.fromRGBO(75, 117, 89, 9),
                           fontSize: 22,

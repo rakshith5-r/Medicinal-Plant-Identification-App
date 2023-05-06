@@ -12,8 +12,11 @@ import 'package:page_transition/page_transition.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
 class RootPage extends StatefulWidget {
-  const RootPage({Key? key}) : super(key: key);
-
+//late final StreamController<Locale> localeController;
+  const RootPage({
+    super.key,
+    /*required this.localeController*/
+  });
   @override
   State<RootPage> createState() => _RootPageState();
 }
@@ -206,10 +209,12 @@ class _RootPageState extends State<RootPage> with SingleTickerProviderStateMixin
                     onPressed: () async {
                       await controller.captureImage();// TODO: implement action for camera icon
                       FileImage f =FileImage(File(controller.imagePath.toString()));
+                      File pred = File(controller.imagePath.toString());
+
                       if(controller.imagePath.toString() != ""){
                         Navigator.push(context, MaterialPageRoute(
                             builder: (context){
-                          return ScannerAnim(f:f);
+                          return ScannerAnim(f:f, pred: pred,);
                         },));
                       }else{
                         Navigator.popUntil(context, (route) => true);
@@ -249,10 +254,12 @@ class _RootPageState extends State<RootPage> with SingleTickerProviderStateMixin
                     onPressed: () async {
                       await controller.getImage();// TODO: implement action for photo icon
                       FileImage f =FileImage(File(controller.imagePath.toString()));
+                      File pred = File(controller.imagePath.toString());
+
                       if(controller.imagePath.toString() != ""){
                         Navigator.push(context, MaterialPageRoute(
                             builder: (context){
-                              return ScannerAnim(f: f);
+                              return ScannerAnim(f: f, pred: pred,);
                             }
                         ));
                       }else{

@@ -130,7 +130,7 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ), //image
                   Positioned(
-                    bottom: 60,
+                    bottom: 100,
                     left: 0,
                     right: 0,
                     child: Container(
@@ -172,7 +172,7 @@ class _DetailPageState extends State<DetailPage> {
                               Column(
                                 children: [
                                   Container(
-                                    height: 270,
+                                    height: 359,
                                     width: double.infinity,
                                     child: PageView(
                                       children: [
@@ -183,7 +183,7 @@ class _DetailPageState extends State<DetailPage> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                "Decriptions",
+                                                "Plant Details",
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 20.0,
@@ -193,10 +193,10 @@ class _DetailPageState extends State<DetailPage> {
                                               SizedBox(height: 10), // Add some spacing between the two text widgets
                                               Text(
                                                 _plantList[widget.plantID].decription.tr,
-                                                textAlign: TextAlign.justify,
+                                                textAlign: TextAlign.start,
                                                 style: TextStyle(
                                                   color: Colors.black87,
-                                                  fontSize: 16.0,
+                                                  fontSize: 18.0,
                                                 ),
                                               ),
                                             ],
@@ -205,12 +205,12 @@ class _DetailPageState extends State<DetailPage> {
 
                                         Container(
                                           height: 250,
-                                          padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
+                                          padding: EdgeInsets.symmetric(vertical: 39, horizontal: 10),
                                           color: Colors.white,
                                           child: Column(
                                             children: [
                                               Text(
-                                                "Application",
+                                                "Medicinal Applications",
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 20.0,
@@ -220,7 +220,7 @@ class _DetailPageState extends State<DetailPage> {
                                               SizedBox(height: 10), // Add some spacing between the two text widgets
                                               Text(
                                                 _plantList[widget.plantID].decriptions.tr,
-                                                textAlign: TextAlign.justify,
+                                                textAlign: TextAlign.start,
                                                 style: TextStyle(
                                                   color: Colors.black87,
                                                   fontSize: 16.0,
@@ -232,12 +232,12 @@ class _DetailPageState extends State<DetailPage> {
 
                                         Container(
                                           height: 250,
-                                          padding: EdgeInsets.symmetric(vertical: 40, horizontal: 10),
+                                          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                                           color: Colors.white,
                                           child: Column(
                                             children: [
                                               Text(
-                                                "Others",
+                                                "Medicinal Usage",
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 20.0,
@@ -247,7 +247,7 @@ class _DetailPageState extends State<DetailPage> {
                                               SizedBox(height: 10), // Add some spacing between the two text widgets
                                               Text(
                                                 _plantList[widget.plantID].decriptionss.tr,
-                                                textAlign: TextAlign.justify,
+                                                textAlign: TextAlign.start,
                                                 style: TextStyle(
                                                   color: Colors.black87,
                                                   fontSize: 16.0,
