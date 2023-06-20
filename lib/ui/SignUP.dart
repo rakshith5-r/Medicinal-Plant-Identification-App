@@ -6,7 +6,6 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:page_transition/page_transition.dart';
 import 'root_page.dart';
 
-
 class SignUpScreenn extends StatefulWidget {
   @override
   _SignUpScreennState createState() => _SignUpScreennState();
@@ -20,18 +19,20 @@ class _SignUpScreennState extends State<SignUpScreenn> {
   bool _acceptTerms = false;
 
   @override
-  void dispose(){
+  void dispose() {
     _emailTextController.dispose();
     _passwordTextController.dispose();
     _displayNameTextController.dispose();
     super.dispose();
   }
 
-  Future singUp() async{
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  Future singUp() async {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
       email: _emailTextController.text,
       password: _passwordTextController.text,
-    ).then((value) {
+    )
+        .then((value) {
       Navigator.push(
         context,
         PageTransition(
@@ -41,28 +42,30 @@ class _SignUpScreennState extends State<SignUpScreenn> {
       );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Sign up successful.Welcome, ${_displayNameTextController.text}!'),
+          content: Text(
+              'Sign up successful.Welcome, ${_displayNameTextController.text}!'),
           duration: Duration(seconds: 3),
         ),
       );
-    }).catchError((error) {
-      String errorMessage;
-      if (error.code == 'email-already-in-use') {
-        errorMessage = 'Account already exists.';
-      } else if (error.code == 'invalid-email') {
-        errorMessage = 'Invalid email address.';
-      } else if (error.code == 'weak-password') {
-        errorMessage = 'Password is too weak.';
-      } else {
-        errorMessage = 'An error occurred. Please try again later.';
-      }
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(errorMessage),
-          duration: Duration(seconds: 3),
-        ),
-      );
-    },
+    }).catchError(
+      (error) {
+        String errorMessage;
+        if (error.code == 'email-already-in-use') {
+          errorMessage = 'Account already exists.';
+        } else if (error.code == 'invalid-email') {
+          errorMessage = 'Invalid email address.';
+        } else if (error.code == 'weak-password') {
+          errorMessage = 'Password is too weak.';
+        } else {
+          errorMessage = 'An error occurred. Please try again later.';
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(errorMessage),
+            duration: Duration(seconds: 3),
+          ),
+        );
+      },
     );
 // add users details
     addUserDetails(
@@ -71,11 +74,10 @@ class _SignUpScreennState extends State<SignUpScreenn> {
     );
   }
 
-  Future addUserDetails(
-      String displayName, String email) async{
+  Future addUserDetails(String displayName, String email) async {
     await FirebaseFirestore.instance.collection('users').add({
-      'displayName':displayName,
-      'email':email,
+      'displayName': displayName,
+      'email': email,
     });
   }
 
@@ -139,7 +141,6 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
-
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20.0,
@@ -152,7 +153,7 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                     SizedBox(height: 10),
                     Neumorphic(
                       style: NeumorphicStyle(
-                        color:Color.fromRGBO(150,190,93,200) ,
+                        color: Color.fromRGBO(150, 190, 93, 200),
                         depth: -1.5,
                         boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(12),
@@ -169,14 +170,17 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
-                          prefixIcon: Icon(Icons.person,color: Color.fromRGBO(75, 117, 89, 9),),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Color.fromRGBO(75, 117, 89, 9),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(height: 20),
                     Neumorphic(
                       style: NeumorphicStyle(
-                        color:Color.fromRGBO(150,190,93,200) ,
+                        color: Color.fromRGBO(150, 190, 93, 200),
                         depth: -1.5,
                         boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(12),
@@ -194,14 +198,17 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
-                          prefixIcon: Icon(Icons.email,color: Color.fromRGBO(75, 117, 89, 9),),
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Color.fromRGBO(75, 117, 89, 9),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(height: 20),
                     Neumorphic(
                       style: NeumorphicStyle(
-                        color:Color.fromRGBO(150,190,93,200) ,
+                        color: Color.fromRGBO(150, 190, 93, 200),
                         depth: -1.5,
                         boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(12),
@@ -219,15 +226,20 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
-                          prefixIcon: Icon(Icons.lock,color: Color.fromRGBO(75, 117, 89, 9),),
+                          prefixIcon: Icon(
+                            Icons.lock,
+                            color: Color.fromRGBO(75, 117, 89, 9),
+                          ),
                           suffix: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               setState(() {
                                 _showPassword = !_showPassword;
                               });
                             },
                             child: Icon(
-                              _showPassword ? Icons.visibility_off :Icons.visibility,
+                              _showPassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                               color: Color.fromRGBO(75, 117, 89, 9),
                             ),
                           ),
@@ -237,9 +249,11 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                     Row(
                       children: [
                         Checkbox(
-                          activeColor: Color.fromRGBO(75, 117, 89, 9), // changes the border color
+                          activeColor: Color.fromRGBO(
+                              75, 117, 89, 9), // changes the border color
                           checkColor: Colors.white, // changes the tick color
-                          hoverColor: Colors.blue, // changes the inside shade color
+                          hoverColor:
+                              Colors.blue, // changes the inside shade color
                           value: _acceptTerms,
                           onChanged: (value) {
                             setState(() {
@@ -256,10 +270,10 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                         ),
                       ],
                     ),
-
-                    SizedBox(height:10),
+                    SizedBox(height: 10),
                     NeumorphicButton(
-                      margin: EdgeInsets.symmetric(horizontal: 100, vertical: 1),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 100, vertical: 1),
                       onPressed: _acceptTerms ? singUp : null,
                       style: NeumorphicStyle(
                         depth: 10,
@@ -283,8 +297,6 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                         ),
                       ),
                     ),
-
-
                     Positioned(
                       top: MediaQuery.of(context).size.height * 0.9,
                       left: 0,
@@ -292,7 +304,11 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                       child: Center(
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));// Add your sign-in logic here
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        LoginPage())); // Add your sign-in logic here
                           },
                           child: Text(
                             'Already have an account? Sign In',
@@ -306,7 +322,6 @@ class _SignUpScreennState extends State<SignUpScreenn> {
                       ),
                     ),
                   ],
-
                 ),
               ),
             ),

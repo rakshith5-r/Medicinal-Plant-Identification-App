@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flore/constants.dart';
@@ -6,6 +5,7 @@ import 'package:flore/ui/LogIN.dart';
 import 'package:flutter/material.dart';
 import 'widgets/profile_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -22,16 +22,23 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     _getUserData();
   }
+
 //1
   Future<void> _getUserData() async {
     try {
       final User? user = FirebaseAuth.instance.currentUser;
+      //Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+      // return Text("Full Name: ${data['full_name']} ${data['last_name']}");
       if (user != null) {
         final DocumentSnapshot<Map<String, dynamic>> snapshot =
-        await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.uid)
+                .get();
+        _userData = snapshot.data();
         setState(() {
           _user = user;
-          _userData = snapshot.data();
+          // _userData = data['displayName'];
         });
       }
     } catch (e) {
@@ -44,7 +51,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     print(_user?.email);
-    print(_userData?.keys);
+    print('hi');
+    print(_userData);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(

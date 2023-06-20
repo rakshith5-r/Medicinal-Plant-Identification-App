@@ -1,10 +1,10 @@
+import 'package:flore/constants.dart';
 import 'package:flore/models/plants.dart';
 import 'package:flore/ui/screens/DetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
-import '../../constants.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -22,10 +22,18 @@ class _SearchPageState extends State<SearchPage> {
     setState(() {
       display_list = _plantList
           .where((element) =>
-      element.plantName.tr.toLowerCase().contains(value.toLowerCase()) ||
-          element.decription.tr.toLowerCase().contains(value.toLowerCase())||
-          element.decriptions.tr.toLowerCase().contains(value.toLowerCase())||
-          element.decriptionss.tr.toLowerCase().contains(value.toLowerCase()))
+              element.plantName.tr
+                  .toLowerCase()
+                  .contains(value.toLowerCase()) ||
+              element.decription.tr
+                  .toLowerCase()
+                  .contains(value.toLowerCase()) ||
+              element.decriptions.tr
+                  .toLowerCase()
+                  .contains(value.toLowerCase()) ||
+              element.decriptionss.tr
+                  .toLowerCase()
+                  .contains(value.toLowerCase()))
           .toList();
     });
   }
@@ -115,13 +123,14 @@ class _SearchPageState extends State<SearchPage> {
                                       shape: NeumorphicShape.flat,
                                     ),
                                     child: Icon(
-                                      _searchController.text.isNotEmpty ? Icons.close : Icons.arrow_back_ios,
+                                      _searchController.text.isNotEmpty
+                                          ? Icons.close
+                                          : Icons.arrow_back_ios,
                                       color: Colors.white,
                                     ),
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
                         ),

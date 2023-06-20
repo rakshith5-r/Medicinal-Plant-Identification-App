@@ -135,8 +135,8 @@ class _DetailPageState extends State<DetailPage> {
                     right: 0,
                     child: Container(
                       padding:
-                      const EdgeInsets.only(bottom:0, left: 30, right: 20),
-                      height: size.height * 0.49,
+                          const EdgeInsets.only(bottom: 0, left: 30, right: 20),
+                      height: size.height * 0.47,
                       width: size.width,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,106 +157,126 @@ class _DetailPageState extends State<DetailPage> {
                                     ),
                                   ),
                                   const SizedBox(
-                                    height: 10,
+                                    height: 2,
                                   ),
                                 ],
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 5.0,
-                          ),
+
+                          //carasoul slide
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Column(
                                 children: [
                                   Container(
-                                    height: 359,
+                                    height: 320,
                                     width: double.infinity,
                                     child: PageView(
                                       children: [
-                                        Container(
-                                          height: 250,
-                                          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-                                          color: Colors.white,
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                "Plant Details",
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
+                                        SingleChildScrollView(
+                                          child: Container(
+                                            height: 450,
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 10, horizontal: 10),
+                                            color: Colors.white,
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  "Plant Details",
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
-                                              ),
-                                              SizedBox(height: 10), // Add some spacing between the two text widgets
-                                              Text(
-                                                _plantList[widget.plantID].decription.tr,
-                                                textAlign: TextAlign.start,
-                                                style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 18.0,
+                                                SizedBox(
+                                                    height:
+                                                        10), // Add some spacing between the two text widgets
+                                                Text(
+                                                  _plantList[widget.plantID]
+                                                      .decription
+                                                      .tr,
+                                                  textAlign: TextAlign.start,
+                                                  style: TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 15.0,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
-
-                                        Container(
-                                          height: 250,
-                                          padding: EdgeInsets.symmetric(vertical: 39, horizontal: 10),
-                                          color: Colors.white,
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                "Medicinal Applications",
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
+                                        SingleChildScrollView(
+                                          child: Container(
+                                            height: 500,
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 0, horizontal: 10),
+                                            color: Colors.white,
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  "Medicinal Applications",
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
-                                              ),
-                                              SizedBox(height: 10), // Add some spacing between the two text widgets
-                                              Text(
-                                                _plantList[widget.plantID].decriptions.tr,
-                                                textAlign: TextAlign.start,
-                                                style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 16.0,
+                                                SizedBox(
+                                                    height:
+                                                        10), // Add some spacing between the two text widgets
+                                                Text(
+                                                  _plantList[widget.plantID]
+                                                      .decriptions
+                                                      .tr,
+                                                  textAlign: TextAlign.start,
+                                                  style: TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 15.0,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
-
-                                        Container(
-                                          height: 250,
-                                          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-                                          color: Colors.white,
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                "Medicinal Usage",
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                        SingleChildScrollView(
+                                          child: Container(
+                                            height: 500,
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 10, horizontal: 10),
+                                            color: Colors.white,
+                                            child: SingleChildScrollView(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "Medicinal Usage",
+                                                    style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 20.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                      height:
+                                                          10), // Add some spacing between the two text widgets
+                                                  Text(
+                                                    _plantList[widget.plantID]
+                                                        .decriptionss
+                                                        .tr,
+                                                    textAlign: TextAlign.start,
+                                                    style: TextStyle(
+                                                      color: Colors.black87,
+                                                      fontSize: 15.0,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              SizedBox(height: 10), // Add some spacing between the two text widgets
-                                              Text(
-                                                _plantList[widget.plantID].decriptionss.tr,
-                                                textAlign: TextAlign.start,
-                                                style: TextStyle(
-                                                  color: Colors.black87,
-                                                  fontSize: 16.0,
-                                                ),
-                                              ),
-                                            ],
+                                            ),
                                           ),
                                         ),
-
                                       ],
                                       onPageChanged: (index) {
                                         setState(() {
@@ -269,7 +289,8 @@ class _DetailPageState extends State<DetailPage> {
                                     height: 5,
                                   ),
                                   CarouselIndicator(
-                                    color: Color.fromRGBO(75, 117, 89, 9).withOpacity(0.9),
+                                    color: Color.fromRGBO(75, 117, 89, 9)
+                                        .withOpacity(0.9),
                                     count: 3,
                                     index: pageIndex,
                                   ),

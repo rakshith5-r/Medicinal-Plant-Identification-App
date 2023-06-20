@@ -35,8 +35,13 @@ class _HomePageState extends State<HomePage> {
           children: [
             //for search bar
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, PageTransition(child: SearchPage(), type: PageTransitionType.fade));// Do something when the button is pressed
+              onTap: () {
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        child: SearchPage(),
+                        type: PageTransitionType
+                            .fade)); // Do something when the button is pressed
               },
               child: Container(
                 padding: const EdgeInsets.only(top: 5),
@@ -70,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               SizedBox(
-                                width: 175.5,
+                                width: size.width - 185,
                               ),
                               SizedBox(
                                 width: 50,

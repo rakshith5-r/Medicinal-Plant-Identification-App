@@ -17,11 +17,13 @@ class _LoginPageState extends State<LoginPage> {
   bool _showPassword = false;
   bool _acceptTerms = false;
 
-  Future singIn() async{
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+  Future singIn() async {
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
       email: _emailTextController.text,
       password: _passwordTextController.text,
-    ).then((value) {
+    )
+        .then((value) {
       Navigator.push(
         context,
         PageTransition(
@@ -52,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     _emailTextController.dispose();
     _passwordTextController.dispose();
     super.dispose();
@@ -118,7 +120,6 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
-
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20.0,
@@ -131,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: 10),
                     Neumorphic(
                       style: NeumorphicStyle(
-                        color:Color.fromRGBO(150,190,93,200) ,
+                        color: Color.fromRGBO(150, 190, 93, 200),
                         depth: -1.5,
                         boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(12),
@@ -148,15 +149,17 @@ class _LoginPageState extends State<LoginPage> {
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
-                          prefixIcon: Icon(Icons.email,color: Color.fromRGBO(75, 117, 89, 9),),
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Color.fromRGBO(75, 117, 89, 9),
+                          ),
                         ),
                       ),
                     ),
-
                     SizedBox(height: 20),
                     Neumorphic(
                       style: NeumorphicStyle(
-                        color:Color.fromRGBO(150,190,93,200) ,
+                        color: Color.fromRGBO(150, 190, 93, 200),
                         depth: -1.5,
                         boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(12),
@@ -174,29 +177,34 @@ class _LoginPageState extends State<LoginPage> {
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
                           ),
-                          prefixIcon: Icon(Icons.lock,color: Color.fromRGBO(75, 117, 89, 9),),
+                          prefixIcon: Icon(
+                            Icons.lock,
+                            color: Color.fromRGBO(75, 117, 89, 9),
+                          ),
                           suffix: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               setState(() {
                                 _showPassword = !_showPassword;
                               });
                             },
                             child: Icon(
-                              _showPassword ? Icons.visibility_off :Icons.visibility,
+                              _showPassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                               color: Color.fromRGBO(75, 117, 89, 9),
                             ),
                           ),
-
-
                         ),
                       ),
                     ),
                     Row(
                       children: [
                         Checkbox(
-                          activeColor: Color.fromRGBO(75, 117, 89, 9), // changes the border color
+                          activeColor: Color.fromRGBO(
+                              75, 117, 89, 9), // changes the border color
                           checkColor: Colors.white, // changes the tick color
-                          hoverColor: Colors.blue, // changes the inside shade color
+                          hoverColor:
+                              Colors.blue, // changes the inside shade color
                           value: _acceptTerms,
                           onChanged: (value) {
                             setState(() {
@@ -220,7 +228,11 @@ class _LoginPageState extends State<LoginPage> {
                       child: Center(
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()));// Add your sign-in logic here
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ForgotPassword())); // Add your sign-in logic here
                           },
                           child: Text(
                             'Forgot Password',
@@ -233,9 +245,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height:17),
+                    SizedBox(height: 17),
                     NeumorphicButton(
-                      margin: EdgeInsets.symmetric(horizontal: 100, vertical: 1),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 100, vertical: 1),
                       onPressed: _acceptTerms ? singIn : null,
                       style: NeumorphicStyle(
                         depth: 10,
@@ -259,8 +272,6 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-
-
                     Positioned(
                       top: MediaQuery.of(context).size.height * 0.9,
                       left: 0,
@@ -268,7 +279,11 @@ class _LoginPageState extends State<LoginPage> {
                       child: Center(
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreenn()));// Add your sign-in logic here
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SignUpScreenn())); // Add your sign-in logic here
                           },
                           child: Text(
                             'Dont have an account? Sign Up',
@@ -282,7 +297,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ],
-
                 ),
               ),
             ),
